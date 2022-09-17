@@ -1,0 +1,212 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2021971157742590305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021971157742590309}
+  - component: {fileID: 2021971157742590306}
+  - component: {fileID: 685263978550531547}
+  - component: {fileID: 2270814113346482437}
+  m_Layer: 0
+  m_Name: Railgun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021971157742590309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021971157742590305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.023962, y: 2.6035945, z: 1.0638438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2021971158369958277}
+  - {fileID: 7117407522926043654}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021971157742590306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021971157742590305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c468e5fa919384cba19aaee766848f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Railgun:
+    FireRate: 2
+    Damage: 100
+    Range: 200
+    HitSparksCount: 16
+    Recoil: 0.5
+    RecoilFOVKick: 6
+    _firingTimer: 0
+    _lastTickShot: 0
+  Muzzle: {fileID: 2021971158369958276}
+  LazerPrefab: {fileID: 9086322735269414444, guid: ed4ae5a5bfae7bf49815ff46fa5267e6, type: 3}
+  SparksPrefab: {fileID: 7979050758479567249, guid: fc754c73d492c4c488c8052bbcc27bf8, type: 3}
+  SparksCount: 16
+--- !u!114 &685263978550531547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021971157742590305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fea7091bb9848b191c018d3718ec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2270814113346482437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021971157742590305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c79d771cedb4794bf100ce60df5f764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultGhostMode: 1
+  SupportedGhostModes: 3
+  OptimizationMode: 0
+  Importance: 1
+  prefabId: f07680ce1c7f5e14c8fdfea3f956ca3d
+  Name: Railgun
+  HasOwner: 0
+  SupportAutoCommandTarget: 0
+  UsePreSerialization: 0
+  RefGameObjects:
+  - {fileID: 2021971157742590305}
+  - {fileID: 2021971157742590305}
+  - {fileID: 2021971157742590305}
+  RefGuids: 000000000000000000000000000000000000000000000000
+  ComponentNames:
+  - Unity.Transforms.Rotation
+  - Unity.Transforms.Translation
+  - Rival.Samples.OnlineFPS.Railgun
+  PrefabTypeOverrides: []
+  SendTypeOverrides: []
+  VariantOverrides:
+  - Value: 8440607655502951655
+    OverrideIndex: 0
+  - Value: 6891101951425042784
+    OverrideIndex: 1
+  SendForChild: []
+--- !u!1 &2021971158369958276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021971158369958277}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021971158369958277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021971158369958276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2021971157742590309}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7299390600490403309
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2021971157742590309}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.248
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.43300012
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5000007
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5000008
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999923
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.49999928
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8eb4b79519f1ee348877c88ce0ab96a0, type: 2}
+    - target: {fileID: 919132149155446097, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+      propertyPath: m_Name
+      value: Railgun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+--- !u!4 &7117407522926043654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3226d2b9e873bcd41a38be8fb474c894, type: 3}
+  m_PrefabInstance: {fileID: 7299390600490403309}
+  m_PrefabAsset: {fileID: 0}
