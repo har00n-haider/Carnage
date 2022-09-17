@@ -188,6 +188,12 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             {
                 CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
             }
+
+            // Handle Sprint
+            if (FirstPersonCharacterInputs.Sprint)
+            {
+                targetVelocity *= FirstPersonCharacter.SprintSpeedMultiplier;
+            }
         }
         else
         {

@@ -34,6 +34,8 @@ public struct FirstPersonCharacterComponent : IComponentData
 
     [Header("Misc")]
     public bool ConstrainVelocityToGroundPlane;
+    public float SprintSpeedMultiplier;
+
 
     [HideInInspector]
     public Entity CharacterViewEntity;
@@ -79,4 +81,6 @@ public struct FirstPersonCharacterInputs : IComponentData
     public float3 MoveVector;
     public float2 LookYawPitchDegrees;
     public bool JumpRequested;
+    public bool Sprint;
+
 }

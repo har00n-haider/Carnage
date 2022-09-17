@@ -32,6 +32,8 @@ public partial class FirstPersonPlayerSystem : SystemBase
         moveInput.x += Input.GetKey(KeyCode.A) ? -1f : 0f;
         bool jumpInput = Input.GetKeyDown(KeyCode.Space);
         float2 lookInput = new float2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        bool sprintInput = Input.GetKey(KeyCode.LeftShift);
+
 
         // Iterate on all Player components to apply input to their character
         Entities
@@ -65,6 +67,10 @@ public partial class FirstPersonPlayerSystem : SystemBase
                     {
                         characterInputs.JumpRequested = jumpInput;
                     }
+                    
+                    // Sprint
+                    characterInputs.Sprint = sprintInput;
+
 
                     player.LastInputsProcessingTick = fixedTick;
 
