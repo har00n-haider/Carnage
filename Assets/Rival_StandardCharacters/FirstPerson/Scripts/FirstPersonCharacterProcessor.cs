@@ -194,6 +194,9 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             {
                 targetVelocity *= FirstPersonCharacter.SprintSpeedMultiplier;
             }
+
+            // Reset air jumps when grounded
+            FirstPersonCharacter.CurrentAirJumps = 0;
         }
         else
         {
@@ -206,6 +209,14 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
 
             // Drag
             CharacterControlUtilities.ApplyDragToVelocity(ref CharacterBody.RelativeVelocity, DeltaTime, FirstPersonCharacter.AirDrag);
+
+            // Air Jumps
+            // TODO:this is janky at the momoment as Jump requested stays positive for too long
+            //if (FirstPersonCharacterInputs.JumpRequested && FirstPersonCharacter.CurrentAirJumps < FirstPersonCharacter.MaxAirJumps)
+            
+            //    CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
+            //    FirstPersonCharacter.CurrentAirJumps++;
+            //}
         }
     }
 }

@@ -15,6 +15,7 @@ public struct FirstPersonCharacterComponent : IComponentData
     public float AirMaxSpeed;
     public float AirDrag;
     public float JumpSpeed;
+    public int MaxAirJumps;
     public float3 Gravity;
 
     [Header("Step Handling")]
@@ -37,6 +38,10 @@ public struct FirstPersonCharacterComponent : IComponentData
     public float SprintSpeedMultiplier;
 
 
+
+
+    [HideInInspector]
+    public int CurrentAirJumps;
     [HideInInspector]
     public Entity CharacterViewEntity;
     [HideInInspector]
