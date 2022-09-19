@@ -6,6 +6,8 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Rival;
 using Unity.Physics;
+using Unity.Physics.Authoring;
+
 
 public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
 {
@@ -50,7 +52,23 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
     #region Processor Callbacks
     public bool CanCollideWithHit(in BasicHit hit)
     {
-        return KinematicCharacterUtilities.DefaultMethods.CanCollideWithHit(in hit, in StoredKinematicCharacterBodyPropertiesFromEntity);
+        // First, see if we'd have to ignore based on the default implementation
+        if (!KinematicCharacterUtilities.DefaultMethods.CanCollideWithHit(in hit, in StoredKinematicCharacterBodyPropertiesFromEntity))
+        {
+            return false;
+        }
+
+        //TODO: This is not working at the moment...
+        // if not, check for the ignored tag
+        if (FirstPersonCharacter.IgnoredPhysicsTags.Value > CustomPhysicsBodyTags.Nothing.Value)
+        {
+            if ((CollisionWorld.Bodies[hit.RigidBodyIndex].CustomTags & FirstPersonCharacter.IgnoredPhysicsTags.Value) > 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public bool IsGroundedOnHit(in BasicHit hit, int groundingEvaluationType)

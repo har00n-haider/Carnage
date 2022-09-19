@@ -3,6 +3,8 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using Unity.Physics.Authoring;
+
 
 [Serializable]
 public struct FirstPersonCharacterComponent : IComponentData
@@ -38,6 +40,7 @@ public struct FirstPersonCharacterComponent : IComponentData
     public float SprintSpeedMultiplier;
 
 
+    public CustomPhysicsBodyTags IgnoredPhysicsTags;
 
 
     [HideInInspector]
@@ -87,5 +90,6 @@ public struct FirstPersonCharacterInputs : IComponentData
     public float2 LookYawPitchDegrees;
     public bool JumpRequested;
     public bool Sprint;
+
 
 }
