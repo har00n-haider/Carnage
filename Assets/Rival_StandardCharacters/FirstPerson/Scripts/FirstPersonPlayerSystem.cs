@@ -25,14 +25,28 @@ public partial class FirstPersonPlayerSystem : SystemBase
         uint fixedTick = FixedUpdateTickSystem.FixedTick;
 
         // Gather input
+        // -------- movement --------
         float2 moveInput = float2.zero;
-        moveInput.y += Input.GetKey(KeyCode.W) ? 1f : 0f;
-        moveInput.y += Input.GetKey(KeyCode.S) ? -1f : 0f;
-        moveInput.x += Input.GetKey(KeyCode.D) ? 1f : 0f;
-        moveInput.x += Input.GetKey(KeyCode.A) ? -1f : 0f;
-        bool jumpInput = Input.GetKeyDown(KeyCode.Space);
-        float2 lookInput = new float2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        bool sprintInput = Input.GetKey(KeyCode.LeftShift);
+        if(Input.GetKey(KeyCode.W) ||
+           Input.GetKey(KeyCode.S) ||
+           Input.GetKey(KeyCode.D) ||
+           Input.GetKey(KeyCode.A)) 
+        {
+            moveInput.y += Input.GetKey(KeyCode.W) ? 1f : 0f;
+            moveInput.y += Input.GetKey(KeyCode.S) ? -1f : 0f;
+            moveInput.x += Input.GetKey(KeyCode.D) ? 1f : 0f;
+            moveInput.x += Input.GetKey(KeyCode.A) ? -1f : 0f;
+        }
+        else 
+        {
+            moveInput = new float2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        // -------- look --------
+        float2 lookInput = new float2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
+        // -------- buttons --------
+        bool jumpInput = Input.GetButton("Jump") ;
+        bool sprintInput = Input.GetButton("Fire2");
+
 
 
         // Iterate on all Player components to apply input to their character
