@@ -702,7 +702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpForce:
     x: 0
-    y: 20
+    y: 50
     z: 0
 --- !u!114 &1339080244
 MonoBehaviour:

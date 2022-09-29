@@ -22,7 +22,7 @@ public partial class CharacterHitsDetectionSystem : SystemBase
                     KinematicCharacterHit hit = characterHitsBuffer[i];
                     if (!hit.IsGroundedOnHit)
                     {
-                        UnityEngine.Debug.Log("Detected an ungrounded hit");
+                        //UnityEngine.Debug.Log("Detected an ungrounded hit");
                     }
                 }
             }).Run();
