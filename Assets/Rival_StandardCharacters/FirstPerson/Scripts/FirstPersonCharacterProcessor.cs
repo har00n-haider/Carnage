@@ -58,8 +58,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             return false;
         }
 
-        //TODO: This is not working at the moment...
-        // if not, check for the ignored tag
+        // if not, check for the ignored tag. NOTE: This only works on static bodies at the moment
         if (FirstPersonCharacter.IgnoredPhysicsTags.Value > CustomPhysicsBodyTags.Nothing.Value)
         {
             if ((CollisionWorld.Bodies[hit.RigidBodyIndex].CustomTags & FirstPersonCharacter.IgnoredPhysicsTags.Value) > 0)
@@ -204,6 +203,7 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             // Jump
             if (FirstPersonCharacterInputs.JumpRequested)
             {
+                FirstPersonCharacterInputs.JumpRequested = false; // write back that the jump has been processed (a single frame activity)
                 CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
             }
 
@@ -229,12 +229,12 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
             CharacterControlUtilities.ApplyDragToVelocity(ref CharacterBody.RelativeVelocity, DeltaTime, FirstPersonCharacter.AirDrag);
 
             // Air Jumps
-            // TODO:this is janky at the momoment as Jump requested stays positive for too long
-            //if (FirstPersonCharacterInputs.JumpRequested && FirstPersonCharacter.CurrentAirJumps < FirstPersonCharacter.MaxAirJumps)
-            
-            //    CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
-            //    FirstPersonCharacter.CurrentAirJumps++;
-            //}
+            if (FirstPersonCharacterInputs.JumpRequested && FirstPersonCharacter.CurrentAirJumps < FirstPersonCharacter.MaxAirJumps) 
+            {
+                FirstPersonCharacterInputs.JumpRequested = false; // write back that the jump has been processed (a single frame activity)
+                CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
+                FirstPersonCharacter.CurrentAirJumps++;
+            }
         }
     }
 }
