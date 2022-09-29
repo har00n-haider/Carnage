@@ -198,6 +198,13 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
         {
             // Move on ground
             float3 targetVelocity = FirstPersonCharacterInputs.MoveVector * FirstPersonCharacter.GroundMaxSpeed;
+
+            // Handle Sprint
+            if (FirstPersonCharacterInputs.Sprint)
+            {
+                targetVelocity *= FirstPersonCharacter.SprintSpeedMultiplier;
+            }
+
             CharacterControlUtilities.StandardGroundMove_Interpolated(ref CharacterBody.RelativeVelocity, targetVelocity, FirstPersonCharacter.GroundedMovementSharpness, DeltaTime, FirstPersonCharacter.GroundingUp, CharacterBody.GroundHit.Normal);
 
             // Jump
@@ -207,11 +214,6 @@ public struct FirstPersonCharacterProcessor : IKinematicCharacterProcessor
                 CharacterControlUtilities.StandardJump(ref CharacterBody, FirstPersonCharacter.GroundingUp * FirstPersonCharacter.JumpSpeed, true, FirstPersonCharacter.GroundingUp);
             }
 
-            // Handle Sprint
-            if (FirstPersonCharacterInputs.Sprint)
-            {
-                targetVelocity *= FirstPersonCharacter.SprintSpeedMultiplier;
-            }
 
             // Reset air jumps when grounded
             FirstPersonCharacter.CurrentAirJumps = 0;

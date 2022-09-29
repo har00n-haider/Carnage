@@ -45,7 +45,7 @@ public partial class FirstPersonPlayerSystem : SystemBase
         float2 lookInput = new float2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
         // -------- buttons --------
         bool jumpInput = Input.GetButtonDown("Jump") ;
-        bool sprintInput = Input.GetButtonDown("Fire2");
+        bool sprintInput = Input.GetAxis("Sprint") > 0.5f ? true : false;
 
 
 
