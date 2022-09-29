@@ -45,7 +45,6 @@ public partial class AIControllerSystem : SystemBase
                     // If it has a character component but no AIController component, that means it's a human player character
                     if (HasComponent<FirstPersonCharacterComponent>(hitEntity) && !HasComponent<AIController>(hitEntity))
                     {
-                        UnityEngine.Debug.Log($"Found player character");
                         selectedTarget = hitEntity;
                         break; // early out
                     }
