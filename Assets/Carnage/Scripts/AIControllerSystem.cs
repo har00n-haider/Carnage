@@ -18,10 +18,8 @@ public partial class AIControllerSystem : SystemBase
 
         Entities
             .WithDisposeOnCompletion(distanceHits) // Dispose the list when the job is done
-            .ForEach((ref ThirdPersonCharacterInputs characterInputs, in AIController aiController, in ThirdPersonCharacterComponent character, in Translation translation) =>
+            .ForEach((ref FirstPersonCharacterInputs characterInputs, in AIController aiController, in FirstPersonCharacterComponent character, in Translation translation) =>
             {
-                UnityEngine.Debug.Log("Running AI system");
-
                 // Clear our detected hits list between each use
                 distanceHits.Clear();
 
@@ -37,6 +35,7 @@ public partial class AIControllerSystem : SystemBase
                 };
                 physicsWorld.CalculateDistance(distInput, ref hitsCollector);
 
+
                 // Iterate on all detected hits to try to find a human-controlled character...
                 Entity selectedTarget = Entity.Null;
                 for (int i = 0; i < hitsCollector.NumHits; i++)
@@ -44,8 +43,9 @@ public partial class AIControllerSystem : SystemBase
                     Entity hitEntity = distanceHits[i].Entity;
 
                     // If it has a character component but no AIController component, that means it's a human player character
-                    if (HasComponent<ThirdPersonCharacterComponent>(hitEntity) && !HasComponent<AIController>(hitEntity))
+                    if (HasComponent<FirstPersonCharacterComponent>(hitEntity) && !HasComponent<AIController>(hitEntity))
                     {
+                        UnityEngine.Debug.Log($"Found player character");
                         selectedTarget = hitEntity;
                         break; // early out
                     }
@@ -58,7 +58,7 @@ public partial class AIControllerSystem : SystemBase
                 }
                 else
                 {
-                    UnityEngine.Debug.Log("Not moving");
+                    //UnityEngine.Debug.Log("Not moving");
                     characterInputs.MoveVector = float3.zero;
                 }
             }).Schedule();
