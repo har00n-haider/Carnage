@@ -34,14 +34,6 @@ public partial class CharacterHitsDetectionSystem : SystemBase
                 for (int i = 0; i < statefulCharacterHitsBuffer.Length; i++)
                 {
                     StatefulKinematicCharacterHit hit = statefulCharacterHitsBuffer[i];
-                    if (hit.State == CharacterHitState.Enter)
-                    {
-                        UnityEngine.Debug.Log("Entered new hit");
-                    }
-                    else if (hit.State == CharacterHitState.Exit)
-                    {
-                        UnityEngine.Debug.Log("Exited new hit");
-                    }
                 }
             }).Run();
     }
