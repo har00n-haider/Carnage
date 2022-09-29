@@ -46,7 +46,6 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
         public BufferTypeHandle<StatefulKinematicCharacterHit> StatefulCharacterHitsBufferType;
 
         public ComponentTypeHandle<FirstPersonCharacterComponent> FirstPersonCharacterType;
-        [ReadOnly]
         public ComponentTypeHandle<FirstPersonCharacterInputs> FirstPersonCharacterInputsType;
 
         [NativeDisableContainerSafetyRestriction]
@@ -131,6 +130,8 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
                 chunkCharacterBodies[i] = processor.CharacterBody;
                 chunkPhysicsColliders[i] = processor.PhysicsCollider; // safe to remove if not needed. This would be needed if you resize the character collider, for example
                 chunkFirstPersonCharacters[i] = processor.FirstPersonCharacter; // safe to remove if not needed. This would be needed if you changed data in your own character component
+                chunkFirstPersonCharacterInputs[i] = processor.FirstPersonCharacterInputs; // inputs are being modified by the processor, so need to write back to chunk
+
             }
         }
     }
@@ -184,7 +185,7 @@ public partial class FirstPersonCharacterMovementSystem : SystemBase
             StatefulCharacterHitsBufferType = GetBufferTypeHandle<StatefulKinematicCharacterHit>(false),
 
             FirstPersonCharacterType = GetComponentTypeHandle<FirstPersonCharacterComponent>(false),
-            FirstPersonCharacterInputsType = GetComponentTypeHandle<FirstPersonCharacterInputs>(true),
+            FirstPersonCharacterInputsType = GetComponentTypeHandle<FirstPersonCharacterInputs>(false),
         }.ScheduleParallel(CharacterQuery, Dependency);
 
         Dependency = KinematicCharacterUtilities.ScheduleDeferredImpulsesJob(this, CharacterQuery, Dependency);
