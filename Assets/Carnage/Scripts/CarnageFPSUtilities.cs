@@ -9,6 +9,24 @@ using Unity.Transforms;
 
 public static class CarnageFPSUtilities
 {
+
+    public static bool GetGamePrefabOfType<T>(EntityManager entityManager, Entity gameCollectionEntity, out Entity prefabEntity) where T : struct
+    {
+        prefabEntity = default;
+
+        DynamicBuffer<GamePrefabsReference> prefabs = entityManager.GetBuffer<GamePrefabsReference>(gameCollectionEntity);
+        for (int i = 0; i < prefabs.Length; ++i)
+        {
+            if (entityManager.HasComponent<T>(prefabs[i].Value))
+            {
+                prefabEntity = prefabs[i].Value;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static void SetShadowModeInHierarchy(EntityManager entityManager, EntityCommandBuffer commandBuffer, Entity onEntity, BufferFromEntity<Child> childBufferFromEntity, UnityEngine.Rendering.ShadowCastingMode mode)
     {
         if (entityManager.HasComponent<RenderMesh>(onEntity))

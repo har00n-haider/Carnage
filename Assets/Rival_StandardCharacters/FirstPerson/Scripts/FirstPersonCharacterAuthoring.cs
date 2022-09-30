@@ -5,6 +5,9 @@ using UnityEngine;
 using Rival;
 using Unity.Physics;
 using System.Collections.Generic;
+using System;
+using Unity.Entities;
+using Unity.Collections;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(PhysicsShapeAuthoring))]
@@ -12,6 +15,7 @@ using System.Collections.Generic;
 public class FirstPersonCharacterAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
     public Transform CharacterViewTransform;
+    public GameObject WeaponSocket;
     public AuthoringKinematicCharacterBody CharacterBody = AuthoringKinematicCharacterBody.GetDefault();
     public FirstPersonCharacterComponent FirstPersonCharacter = FirstPersonCharacterComponent.GetDefault();
 
@@ -31,8 +35,13 @@ public class FirstPersonCharacterAuthoring : MonoBehaviour, IConvertGameObjectTo
         KinematicCharacterUtilities.HandleConversionForCharacter(dstManager, entity, gameObject, CharacterBody);
 
         FirstPersonCharacter.CharacterViewEntity = conversionSystem.GetPrimaryEntity(CharacterViewTransform.gameObject);
+        FirstPersonCharacter.WeaponSocketEntity = conversionSystem.GetPrimaryEntity(WeaponSocket);
+
 
         dstManager.AddComponentData(entity, FirstPersonCharacter);
         dstManager.AddComponentData(entity, new FirstPersonCharacterInputs());
+        dstManager.AddComponentData(entity, new ActiveWeapon());
+
+
     }
 }

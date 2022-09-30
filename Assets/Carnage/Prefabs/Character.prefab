@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6024035451200528035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4761898354929143618}
+  m_Layer: 0
+  m_Name: WeaponSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4761898354929143618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024035451200528035}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.238, y: -0.20899999, z: 0.593}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4526752752161935225}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6203044319308789350
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,7 +59,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4761898354929143618}
   m_Father: {fileID: 8327651225329182638}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,6 +171,7 @@ GameObject:
   - component: {fileID: 8327651225329182637}
   - component: {fileID: 4834660103627693192}
   - component: {fileID: -39851746481709756}
+  - component: {fileID: 6802897167804408089}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -154,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8327651225329182639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 622, y: -88.3, z: -444.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -319,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterViewTransform: {fileID: 4526752752161935225}
+  WeaponSocket: {fileID: 6024035451200528035}
   CharacterBody:
     CustomPhysicsBodyTags:
       Tag00: 0
@@ -368,6 +402,35 @@ MonoBehaviour:
     MaxVAngle: 89
     ConstrainVelocityToGroundPlane: 1
     SprintSpeedMultiplier: 2
+    WeaponBobHAmount: 0.08
+    WeaponBobVAmount: 0.06
+    WeaponBobTAmount: 6
+    WeaponBobFrequency: 10
+    WeaponBobSharpness: 10
+    WeaponBobAimRatio: 0.25
+    RecoilMaxDistance: 0.5
+    RecoilSharpness: 100
+    RecoilRestitutionSharpness: 5
+    RecoilMaxFOVKick: 10
+    RecoilFOVKickSharpness: 150
+    RecoilFOVKickRestitutionSharpness: 15
+    ViewPitchDegrees: 0
+    CameraTiltAngle: 0
+    RecoilVector:
+      x: 0
+      y: 0
+      z: 0
+    WeaponLocalPosBob:
+      x: 0
+      y: 0
+      z: 0
+    WeaponLocalPosRecoil:
+      x: 0
+      y: 0
+      z: 0
+    TargetRecoilFOVKick: 0
+    CurrentRecoilFOVKick: 0
+    ActiveBobMultiplier: 0
     IgnoredPhysicsTags:
       Tag00: 1
       Tag01: 0
@@ -378,7 +441,6 @@ MonoBehaviour:
       Tag06: 0
       Tag07: 0
     CurrentAirJumps: 0
-    ViewPitchDegrees: 0
     GroundingUp:
       x: 0
       y: 0
@@ -398,3 +460,15 @@ MonoBehaviour:
   Health:
     MaxHealth: 20
     CurrentHealth: 20
+--- !u!114 &6802897167804408089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8327651225329182639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f2478864f6b70468f7ab9afdadb39d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

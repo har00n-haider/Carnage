@@ -23,7 +23,7 @@ public partial class WeaponAssignmentSystem : SystemBase
         EntityCommandBuffer commandBuffer = WeaponSimulationCommandBufferSystem.CreateCommandBuffer();
         ComponentDataFromEntity<Parent> parentFromEntity = GetComponentDataFromEntity<Parent>(true);
         ComponentDataFromEntity<LocalToParent> localToParentFromEntity = GetComponentDataFromEntity<LocalToParent>(true);
-        BufferFromEntity<LinkedEntityGroup> linkedEntityBufferFromEntity = GetBufferFromEntity<LinkedEntityGroup>(false);
+        //BufferFromEntity<LinkedEntityGroup> linkedEntityBufferFromEntity = GetBufferFromEntity<LinkedEntityGroup>(false);
 
         Entities
             .WithoutBurst()
@@ -39,7 +39,7 @@ public partial class WeaponAssignmentSystem : SystemBase
                     if(HasComponent<FirstPersonCharacterComponent>(entity))
                     {
                         FirstPersonCharacterComponent character = GetComponent<FirstPersonCharacterComponent>(entity);
-                        weapon.ShootOriginOverride = character.ViewEntity;
+                        weapon.ShootOriginOverride = character.CharacterViewEntity;
                     }
                     SetComponent(activeWeapon.WeaponEntity, weapon);
 
@@ -55,8 +55,8 @@ public partial class WeaponAssignmentSystem : SystemBase
                             default,
                             quaternion.identity);
 
-                        DynamicBuffer<LinkedEntityGroup> linkedEntityBuffer = linkedEntityBufferFromEntity[entity];
-                        linkedEntityBuffer.Add(new LinkedEntityGroup { Value = activeWeapon.WeaponEntity });
+                        //DynamicBuffer<LinkedEntityGroup> linkedEntityBuffer = linkedEntityBufferFromEntity[entity];
+                        //linkedEntityBuffer.Add(new LinkedEntityGroup { Value = activeWeapon.WeaponEntity });
                     }
 
                     activeWeapon.PreviousWeaponEntity = activeWeapon.WeaponEntity;

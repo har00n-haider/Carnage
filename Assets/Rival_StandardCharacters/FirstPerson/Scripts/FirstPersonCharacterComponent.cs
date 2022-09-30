@@ -83,8 +83,6 @@ public struct FirstPersonCharacterComponent : IComponentData
     public Entity CharacterViewEntity;
     [HideInInspector]
     public float3 GroundingUp;
-    [HideInInspector]
-    public Entity ViewEntity; // TODO: this has to be set up
 
     public static FirstPersonCharacterComponent GetDefault()
     {
