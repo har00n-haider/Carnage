@@ -23,7 +23,6 @@ public struct ScaleFade : IComponentData
     public bool Initialized;
 }
 
-[UpdateInWorld(TargetWorld.Client)]
 [UpdateInGroup(typeof(SimulationSystemGroup))]
 [UpdateBefore(typeof(TransformSystemGroup))]
 public partial class ScaleFadeSystem : SystemBase

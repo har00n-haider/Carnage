@@ -24,7 +24,7 @@ public partial class FirstPersonPlayerSystem : SystemBase
     {
         uint fixedTick = FixedUpdateTickSystem.FixedTick;
 
-        // Gather input
+        // Gather input. Very rough mechanism to get both keyboard and joystick working
         // -------- movement --------
         float2 moveInput = float2.zero;
         if(Input.GetKey(KeyCode.W) ||
@@ -42,13 +42,16 @@ public partial class FirstPersonPlayerSystem : SystemBase
             moveInput = new float2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
         // -------- look --------
-        float2 lookInput = new float2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
+
+        float2 lookInput = new float2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (math.length(lookInput) == 0f) 
+        {
+            lookInput = new float2(Input.GetAxis("RHorizontal"), Input.GetAxis("RVertical"));
+        }
         // -------- buttons --------
         bool jumpInput = Input.GetButtonDown("Jump") ;
-        bool sprintInput = Input.GetAxis("Sprint") > 0.5f ? true : false;
-        bool shootInput = Input.GetAxis("Fire") > 0.5f ? true : false;
-        //bool shootInput = Input.GetButtonDown("Fire2");
-
+        bool sprintInput = Input.GetButton("Sprint1") || Input.GetAxis("Sprint") > 0.5f ? true : false;
+        bool shootInput = Input.GetButton("Fire1") || Input.GetAxis("Fire") > 0.5f ? true : false;
 
         // Iterate on all Player components to apply input to their character
         Entities
