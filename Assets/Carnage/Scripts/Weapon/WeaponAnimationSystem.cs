@@ -29,8 +29,6 @@ public partial class WeaponAnimationSystem : SystemBase
                 in ActiveWeapon activeWeapon) =>
             {
 
-                UnityEngine.Debug.Log("Weapon animation a running ");
-
                     bool isAiming = false;
                     float characterMaxSpeed = characterBody.IsGrounded ? character.GroundMaxSpeed : character.AirMaxSpeed;
                     LocalToWorld cameraLocalToWorld = GetComponent<LocalToWorld>(character.CharacterViewEntity);
