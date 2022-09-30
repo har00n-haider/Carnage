@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Rival_Samples/Sample_StressTest/Scenes/StressTest.unity
     guid: 3a3f0589d0b3814479a8f1bc91863c65
-  - enabled: 0
+  - enabled: 1
     path: Assets/Rival_Samples/Sample_OnlineFPS/Scenes/OnlineFPS.unity
     guid: a664f6ba27040084a89ed830d42a4bec
-  - enabled: 0
+  - enabled: 1
     path: Assets/Rival_Samples/Sample_OnlineFPS/Scenes/OnlineFPSMenu.unity
     guid: 42d519fdc59ea5c4fadda3211779eca7
   m_configObjects:
