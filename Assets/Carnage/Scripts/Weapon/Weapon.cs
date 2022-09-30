@@ -22,8 +22,8 @@ public struct ActiveWeapon : IComponentData
     public Entity PreviousWeaponEntity;
 }
 
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(KinematicCharacterUpdateGroup))]
-[UpdateBefore(typeof(EndFramePhysicsSystem))]
+//[UpdateBefore(typeof(EndFramePhysicsSystem))]
 public class WeaponUpdateGroup : ComponentSystemGroup
 { }

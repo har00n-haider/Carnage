@@ -46,7 +46,8 @@ public partial class FirstPersonPlayerSystem : SystemBase
         // -------- buttons --------
         bool jumpInput = Input.GetButtonDown("Jump") ;
         bool sprintInput = Input.GetAxis("Sprint") > 0.5f ? true : false;
-
+        bool shootInput = Input.GetAxis("Fire") > 0.5f ? true : false;
+        //bool shootInput = Input.GetButtonDown("Fire2");
 
 
         // Iterate on all Player components to apply input to their character
@@ -85,6 +86,18 @@ public partial class FirstPersonPlayerSystem : SystemBase
                     // Sprint
                     characterInputs.Sprint = sprintInput;
 
+
+                    // Shooting
+                    if (HasComponent<ActiveWeapon>(player.ControlledCharacter))
+                    {
+                        ActiveWeapon activeWeapon = GetComponent<ActiveWeapon>(player.ControlledCharacter);
+                        if (HasComponent<Weapon>(activeWeapon.WeaponEntity))
+                        {
+                            Weapon weapon = GetComponent<Weapon>(activeWeapon.WeaponEntity);
+                            weapon.ShootRequested = shootInput;
+                            SetComponent<Weapon>(activeWeapon.WeaponEntity, weapon);
+                        }
+                    }
 
                     player.LastInputsProcessingTick = fixedTick;
 

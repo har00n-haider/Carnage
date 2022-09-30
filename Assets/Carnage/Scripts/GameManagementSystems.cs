@@ -29,6 +29,7 @@ public partial class CommonGameSystem : SystemBase
 
             foreach (var characterEntity in characterEntities)
             {
+                UnityEngine.Debug.Log($"Added weapon to {characterEntity}");
 
 
                 // Spawn weapon and set as activeWeapon
