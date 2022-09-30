@@ -39,18 +39,52 @@ public struct FirstPersonCharacterComponent : IComponentData
     public bool ConstrainVelocityToGroundPlane;
     public float SprintSpeedMultiplier;
 
+    [Header("Weapon")]
+    public float WeaponBobHAmount;
+    public float WeaponBobVAmount;
+    public float WeaponBobTAmount;
+    public float WeaponBobFrequency;
+    public float WeaponBobSharpness;
+    public float WeaponBobAimRatio;
+    public float RecoilMaxDistance;
+    public float RecoilSharpness;
+    public float RecoilRestitutionSharpness;
+    public float RecoilMaxFOVKick;
+    public float RecoilFOVKickSharpness;
+    public float RecoilFOVKickRestitutionSharpness;
+
+    [HideInInspector]
+    public float ViewPitchDegrees;
+
+    [HideInInspector]
+    public float CameraTiltAngle;
+
+    [HideInInspector]
+    public float3 RecoilVector;
+    [HideInInspector]
+    public float3 WeaponLocalPosBob;
+    [HideInInspector]
+    public float3 WeaponLocalPosRecoil;
+    [HideInInspector]
+    public float TargetRecoilFOVKick;
+    [HideInInspector]
+    public float CurrentRecoilFOVKick;
+    [HideInInspector]
+    public float ActiveBobMultiplier;
 
     public CustomPhysicsBodyTags IgnoredPhysicsTags;
 
+    [HideInInspector]
+    public Entity WeaponSocketEntity;
 
     [HideInInspector]
     public int CurrentAirJumps;
     [HideInInspector]
     public Entity CharacterViewEntity;
     [HideInInspector]
-    public float ViewPitchDegrees;
-    [HideInInspector]
     public float3 GroundingUp;
+    [HideInInspector]
+    public Entity ViewEntity; // TODO: this has to be set up
 
     public static FirstPersonCharacterComponent GetDefault()
     {
