@@ -4,7 +4,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Unity.NetCode;
 using Unity.Transforms;
 
 namespace Rival.Samples.OnlineFPS
@@ -16,7 +15,6 @@ namespace Rival.Samples.OnlineFPS
         public float3 LinearLocal;
     }
 
-    [UpdateInWorld(TargetWorld.Client)]
     [UpdateInGroup(typeof(SimulationSystemGroup))]
     [UpdateBefore(typeof(TransformSystemGroup))]
     public partial class ConstantVelocitySystem : SystemBase

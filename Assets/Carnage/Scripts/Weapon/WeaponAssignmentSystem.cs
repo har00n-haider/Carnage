@@ -46,7 +46,7 @@ public partial class WeaponAssignmentSystem : SystemBase
                     if (HasComponent<FirstPersonCharacterComponent>(entity))
                     {
                         FirstPersonCharacterComponent onlineFPSCharacter = GetComponent<FirstPersonCharacterComponent>(entity);
-                        CarnageUtilities.SetParent(
+                        CarnageFPSUtilities.SetParent(
                             commandBuffer,
                             parentFromEntity,
                             localToParentFromEntity,

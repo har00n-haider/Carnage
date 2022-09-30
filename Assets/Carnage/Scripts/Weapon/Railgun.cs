@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
-using Unity.NetCode;
 using UnityEngine;
 
 [Serializable]
@@ -21,7 +20,6 @@ public struct Railgun : IComponentData
     [HideInInspector]
     public Entity HitSparkPrefab;
 
-    [GhostField]
     [HideInInspector]
     public float _firingTimer;
     [HideInInspector]

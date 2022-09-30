@@ -7,7 +7,7 @@ using Unity.Rendering;
 using Unity.Transforms;
 
 
-public static class CarnageUtilities
+public static class CarnageFPSUtilities
 {
     public static void SetShadowModeInHierarchy(EntityManager entityManager, EntityCommandBuffer commandBuffer, Entity onEntity, BufferFromEntity<Child> childBufferFromEntity, UnityEngine.Rendering.ShadowCastingMode mode)
     {
